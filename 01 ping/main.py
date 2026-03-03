@@ -1,7 +1,9 @@
 from time import sleep
+
 from ping3 import ping
 
-hostlist = [
+
+HOSTLIST = [
     "www.google.com",
     "ya.ru",
     "mtiyt.ru",
@@ -16,10 +18,10 @@ hostlist = [
 PING_TIMES = 10
 SLEEP_TIMEOUT = 0.1
 
-f = open("./out.csv", "w")
+f = open("./01 ping/out.csv", "w")
 f.write("Host, min time, avg time, max time, lost percentage, ping count\n")
 
-for host in hostlist:
+for host in HOSTLIST:
     mn_time = None
     mx_time = None
     avg_time = None
