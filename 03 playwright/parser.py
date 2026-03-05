@@ -1,11 +1,11 @@
-import csv
 from playwright.sync_api import sync_playwright
-from time import sleep
+
+import csv
+
 
 CSV_PATH = "./03 playwright/out.csv"
 CSV_FIELDS = ["image_url", "title", "source_url", "description"]
 IMG_COUNT = 10
-SCROLL_DELAY = 5
 SCROLL_CNT = 3
 
 
@@ -52,7 +52,6 @@ with sync_playwright() as p:
             extracted.append(get_img_data(page))
         old_cnt = array_of_imgs.count()
         page.locator("body div.extra-content").scroll_into_view_if_needed()
-        sleep(SCROLL_DELAY)
     browser.close()
 
 with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:

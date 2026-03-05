@@ -33,7 +33,6 @@ if not DB_DSN:
 
 TABLE_NAME = "parsed_images"
 IMG_COUNT = 10
-SCROLL_DELAY = 5
 SCROLL_CNT = 3
 
 
@@ -99,7 +98,6 @@ def playwright_parse(url: str = "https://ya.ru/images/search?text=cats"):
                 extracted.append(get_img_data(page))
             old_cnt = array_of_imgs.count()
             page.locator("body div.extra-content").scroll_into_view_if_needed()
-            sleep(SCROLL_DELAY)
         browser.close()
         return extracted
 
@@ -130,7 +128,6 @@ def parse():
     if not url:
         return jsonify({"error": "Missing 'url' query parameter"}), 400
 
-    # For now just print the URL and return it.
     print(f"Received URL to parse: {url}")
     extracted = playwright_parse(url)
     for img in extracted:
