@@ -50,7 +50,7 @@ def init_db():
 
 def playwright_parse(url: str = "https://ya.ru/images/search?text=cats"):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(url, timeout=100000)
         array_of_imgs = page.locator("body div.JustifierRowLayout div.SerpItem")
